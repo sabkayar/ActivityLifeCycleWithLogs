@@ -18,6 +18,7 @@ package com.example.android.dessertclicker
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -27,6 +28,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.android.dessertclicker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val TAG: String = "MainActivity"
 
     private var revenue = 0
     private var dessertsSold = 0
@@ -77,8 +79,16 @@ class MainActivity : AppCompatActivity() {
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
+
+
+        Log.i(TAG, "onCreate: ")
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart: ")
+    }
+    
     /**
      * Updates the score when the dessert is clicked. Possibly shows a new dessert.
      */
@@ -145,4 +155,6 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+    
+    
 }
